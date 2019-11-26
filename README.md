@@ -1,3 +1,6 @@
+# Notes
+This repo is forked form vishnuprasadv/CaptchaGen, stripped audio generation off, to be fully a .net core lib.
+
 # Captcha Generator - .NET
 A simple class library used for generating image captcha with audio dynamically without the need for external database or library.  
 
