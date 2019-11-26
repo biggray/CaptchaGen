@@ -1,5 +1,5 @@
 # Notes
-This repo is forked form vishnuprasadv/CaptchaGen, stripped audio generation off, to be fully a .net core lib.
+This repo is forked form vishnuprasadv/CaptchaGen, stripped off audio generation, to make it a fully .net core compatible lib.
 
 # Captcha Generator - .NET
 A simple class library used for generating image captcha with audio dynamically without the need for external database or library.  
@@ -41,20 +41,18 @@ response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHead
 return response;
 ```
 
-#### Audio Generation
+#### ~~Audio Generation~~
 
-`AudioFactory` class generates the audio data for a specified captcha string value. It utilizes `SpeechSynthesizer` class to generate the audio data. `AudioFactory.GenerateAudio(string)` returns a `stream` object that contains the audio data
+~~`AudioFactory` class generates the audio data for a specified captcha string value. It utilizes `SpeechSynthesizer` class to generate the audio data. `AudioFactory.GenerateAudio(string)` returns a `stream` object that contains the audio data~~
 
-The following example generates and serves the audio as a response for an incoming request
+~~The following example generates and serves the audio as a response for an incoming request~~
 
-```
-HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-var audioStream = AudioFactory.GenerateAudio(id);
-audioStream.Position = 0;
-response.Content = new StreamContent(audioStream);
-response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("audio/wav");
-return response;
-```
+> ~~HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);~~<br />
+> ~~var audioStream = AudioFactory.GenerateAudio(id);~~<br />
+> ~~audioStream.Position = 0;~~<br />
+> ~~response.Content = new StreamContent(audioStream);~~<br />
+> ~~response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("audio/wav");~~<br />
+> ~~return response;~~
 
 ### Contribution
 
