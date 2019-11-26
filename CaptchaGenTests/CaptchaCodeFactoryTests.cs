@@ -1,24 +1,28 @@
 ﻿using CaptchaGen;
+using Shouldly;
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CaptchaGen.Tests
 {
-    [TestClass()]
     public class CaptchaCodeFactoryTests
     {
-        [TestMethod()]
+        [Fact]
         public void GenerateCaptchaCodeTest()
         {
             string captcha = CaptchaGen.CaptchaCodeFactory.GenerateCaptchaCode(6);
-            Assert.IsTrue(captcha.Length == 6);
+            captcha.Length.ShouldBe(6);
         }
 
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentException), "Error is not thrown for an illegal size")]
+        [Fact]
         public void GenerateCaptchaCodeTest1()
         {
-            string captcha = CaptchaGen.CaptchaCodeFactory.GenerateCaptchaCode(-2);
+            Should.Throw<ArgumentException>(
+                () =>
+                {
+                    CaptchaGen.CaptchaCodeFactory.GenerateCaptchaCode(-2);
+                }
+            ).Message.ShouldBe("Error is not thrown for an illegal size");
         }
     }
 }
